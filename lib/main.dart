@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:personal_expenses_app/widgets/transaction_list.dart';
 import './widgets/transaction_list.dart';
@@ -62,7 +63,11 @@ class _MyHomePageState extends State<MyHomePage> {
     showModalBottomSheet(
         context: ctx,
         builder: (_) {
-          return NewTransaction(_addNewTransaction);
+          return GestureDetector(
+            onTap: () {},
+            child: NewTransaction(_addNewTransaction),
+            behavior: HitTestBehavior.opaque,
+          );
         });
   }
 
