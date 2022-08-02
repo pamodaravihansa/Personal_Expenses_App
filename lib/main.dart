@@ -89,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   // late String titleInput;
-  void _startAddNewTransaction(BuildContext ctx) {
+  void _startAddNewTransaction(BuildContext ctx) {  
     showModalBottomSheet(
         context: ctx,
         builder: (_) {
@@ -100,6 +100,8 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         });
   }
+
+  
 
   @override
   Widget build(BuildContext context) {
