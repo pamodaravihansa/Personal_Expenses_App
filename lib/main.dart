@@ -76,11 +76,12 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
-  void _addNewTransaction(String txTitle, double txAmount) {
+  void _addNewTransaction(
+      String txTitle, double txAmount, DateTime chosendate) {
     final newTx = Transaction(
         title: txTitle,
         amount: txAmount,
-        date: DateTime.now(),
+        date: chosendate,
         id: DateTime.now().toString());
 
     setState(() {
@@ -89,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   // late String titleInput;
-  void _startAddNewTransaction(BuildContext ctx) {  
+  void _startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
         context: ctx,
         builder: (_) {
@@ -100,8 +101,6 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         });
   }
-
-  
 
   @override
   Widget build(BuildContext context) {
