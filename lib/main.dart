@@ -1,10 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+import 'dart:io';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:personal_expenses_app/widgets/chart.dart';
 import 'package:personal_expenses_app/widgets/transaction_list.dart';
+
 import './widgets/transaction_list.dart';
 import './widgets/new_transactions.dart';
 import './models/transaction.dart';
@@ -133,7 +135,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Show Chart'),
-                  Switch(
+                  Switch.adaptive(
                       value: _showChart,
                       onChanged: (val) {
                         setState(() {
@@ -165,10 +167,12 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => _startAddNewTransaction(context),
-      ),
+      floatingActionButton: Platform.isIOS
+          ? Container()
+          : FloatingActionButton(
+              child: Icon(Icons.add),
+              onPressed: () => _startAddNewTransaction(context),
+            ),
     );
   }
 }
